@@ -12,8 +12,11 @@ connectDb();
 
 app.use(express.json()).use(cors());
 
+app.get("/test", (req, res) => {
+  res.send("API WORKING");
+});
+
 app.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const senduser = await User.create(req.body);
     res.status(200).json(senduser);
